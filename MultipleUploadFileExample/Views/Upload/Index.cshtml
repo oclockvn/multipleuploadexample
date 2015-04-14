@@ -1,0 +1,26 @@
+﻿@using MultipleUploadFileExample.Controllers
+@model FileUpload
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/fileinput.css" rel="stylesheet" />
+<h2>Multiple Upload File</h2>
+
+@using (Html.BeginForm("UploadFile", 
+    "Upload", 
+    FormMethod.Post, 
+    htmlAttributes: new { enctype="multipart/form-data" }))
+{
+    @Html.TextBoxFor(m => m.FileUploads, new {id="upload",type="file",multiple="multiple" })
+}
+
+@section scripts{
+<script src="~/Scripts/fileinput.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#upload').fileinput();
+        });
+    </script>
+
+}
